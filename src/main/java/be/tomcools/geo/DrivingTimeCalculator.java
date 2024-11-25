@@ -8,11 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Calculates the driving time (in seconds) between two locations by calculating their Haversine distance in meters
- * assuming average speed {@link #AVERAGE_SPEED_KMPH}.
+ * Utility class with different methods to calculate the driving time for domain objects.
  */
-public final class HaversineDrivingTimeCalculator {
-    private static final HaversineDrivingTimeCalculator INSTANCE = new HaversineDrivingTimeCalculator();
+public final class DrivingTimeCalculator {
+    private static final DrivingTimeCalculator INSTANCE = new DrivingTimeCalculator();
 
     public static final int SPEED_OF_LIGHT_KMPH = 300_000;
     public static final int AVERAGE_SPEED_KMPH = SPEED_OF_LIGHT_KMPH / 2; //santa moves at half of the speed of light
@@ -26,13 +25,18 @@ public final class HaversineDrivingTimeCalculator {
         return Math.round((double) meters / AVERAGE_SPEED_KMPH * 3.6);
     }
 
-    public static synchronized HaversineDrivingTimeCalculator getInstance() {
+    public static synchronized DrivingTimeCalculator getInstance() {
         return INSTANCE;
     }
 
-    private HaversineDrivingTimeCalculator() {
+    private DrivingTimeCalculator() {
+        // Hide public constructor
     }
 
+    /**
+     * Calculates the total driving time for a single Santa.
+     * This includes the driving time to the initial visit and the driving time from the last visit back to Santa's home location.
+     */
     public long getTotalDrivingTimeSeconds(Santa santa) {
         var visits = santa.getVisits();
         if (visits.isEmpty()) {
@@ -51,6 +55,11 @@ public final class HaversineDrivingTimeCalculator {
         return totalDrivingTime;
     }
 
+    /**
+     * Calculates the driving time (in seconds) between two locations by calculating their Haversine distance in meters
+     * assuming average speed {@link #AVERAGE_SPEED_KMPH}.
+     * The original implementation can be found in the <a href="https://github.com/TimefoldAI/timefold-quickstarts/blob/stable/java/vehicle-routing/src/main/java/org/acme/vehiclerouting/domain/geo/HaversineDrivingTimeCalculator.java>Timefold Quickstarts repository</a>
+     */
     public static long calculateDrivingTime(Location from, Location to) {
         String key = "" + from.hashCode() + to.hashCode();
         if (distanceMap.containsKey(key)) {
@@ -82,7 +91,7 @@ public final class HaversineDrivingTimeCalculator {
     private static CartesianCoordinate locationToCartesian(Location location) {
         double latitudeInRads = Math.toRadians(location.lat());
         double longitudeInRads = Math.toRadians(location.lng());
-        // Cartesian coordinates, normalized for a sphere of diameter 1.0
+
         double cartesianX = 0.5 * Math.cos(latitudeInRads) * Math.sin(longitudeInRads);
         double cartesianY = 0.5 * Math.cos(latitudeInRads) * Math.cos(longitudeInRads);
         double cartesianZ = 0.5 * Math.sin(latitudeInRads);

@@ -5,11 +5,11 @@ import ai.timefold.solver.core.api.score.stream.Constraint;
 import ai.timefold.solver.core.api.score.stream.ConstraintFactory;
 import ai.timefold.solver.core.api.score.stream.ConstraintProvider;
 import be.tomcools.domain.Santa;
-import be.tomcools.geo.HaversineDrivingTimeCalculator;
+import be.tomcools.geo.DrivingTimeCalculator;
 import org.jspecify.annotations.NonNull;
 
 public class SantaConstraintProvider implements ConstraintProvider {
-    HaversineDrivingTimeCalculator drivingTimeCalculator = HaversineDrivingTimeCalculator.getInstance();
+    DrivingTimeCalculator drivingTimeCalculator = DrivingTimeCalculator.getInstance();
     public static final String MINIMIZE_TRAVEL_TIME = "minimizeTravelTime";
 
     @Override
@@ -19,6 +19,10 @@ public class SantaConstraintProvider implements ConstraintProvider {
         };
     }
 
+    /**
+     * Creates a constraint which will reduce the SOFT score by 1 for each second driven by a Santa.
+     * NOTE: Normally you'd want to calculate a Distance Matrix before starting the solver.
+     */
     Constraint minimizeTravelTime(ConstraintFactory factory) {
         return factory.forEach(Santa.class)
                 .penalizeLong(HardSoftLongScore.ONE_SOFT,

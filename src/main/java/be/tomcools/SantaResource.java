@@ -15,7 +15,8 @@ import java.util.List;
 
 @Path("santa")
 public class SantaResource {
-
+    // Location of Santa's village in Rovaniemi, Finland.
+    private final static Location SANTAS_HOME = new Location(66.5039, 25.7294);
     private final SolverFactory<SantaPlan> solverFactory;
 
     public SantaResource(SolverFactory<SantaPlan> solverFactory) {
@@ -32,11 +33,10 @@ public class SantaResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public SantaPlan solve(List<Visit> visits) {
-        Santa santa = new Santa(new Location(66.5039, 25.7294));
+        Santa santa = new Santa(SANTAS_HOME);
         SantaPlan santaPlan = new SantaPlan(santa, visits);
 
         Solver<SantaPlan> solver = solverFactory.buildSolver();
-        SantaPlan solution = solver.solve(santaPlan);
-        return solution;
+        return solver.solve(santaPlan);
     }
 }

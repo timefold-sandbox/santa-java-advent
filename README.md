@@ -4,6 +4,7 @@ This repository contains the example code for my blog post at [Java Advent](http
 It is purposefully kept simplistic to show how to use *Timefold Solver* in a minimal example.
 
 For more advanced examples, check out the [Timefold Quickstarts Repository](https://github.com/TimefoldAI/timefold-quickstarts).
+This project was heavily inspired by the [Vehicle Routing Quickstart](https://github.com/TimefoldAI/timefold-quickstarts/tree/stable/java/vehicle-routing).
 
 ## Technologies Used 🎄
 
