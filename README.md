@@ -1,6 +1,6 @@
 # Optimizing Santa's Travels (Java Advent) 🎅
 
-This repository contains the example code for my blog post at [Java Advent](https://www.javaadvent.com/).
+This repository contains the example code for my blog post at [Java Advent](https://www.javaadvent.com/) and for the related Christmas video.
 It is purposefully kept simplistic to show how to use *Timefold Solver* in a minimal example.
 
 For more advanced examples, check out the [Timefold Quickstarts Repository](https://github.com/TimefoldAI/timefold-quickstarts).
