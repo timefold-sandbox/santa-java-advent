@@ -1,11 +1,11 @@
-package be.tomcools.solver;
+package ai.timefold.solver;
 
 import ai.timefold.solver.core.api.score.buildin.hardsoftlong.HardSoftLongScore;
 import ai.timefold.solver.core.api.score.stream.Constraint;
 import ai.timefold.solver.core.api.score.stream.ConstraintFactory;
 import ai.timefold.solver.core.api.score.stream.ConstraintProvider;
-import be.tomcools.domain.Santa;
-import be.tomcools.geo.DrivingTimeCalculator;
+import ai.timefold.domain.Santa;
+import ai.timefold.geo.DrivingTimeCalculator;
 import org.jspecify.annotations.NonNull;
 
 public class SantaConstraintProvider implements ConstraintProvider {

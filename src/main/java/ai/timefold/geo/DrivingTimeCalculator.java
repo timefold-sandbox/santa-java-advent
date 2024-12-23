@@ -1,8 +1,8 @@
-package be.tomcools.geo;
+package ai.timefold.geo;
 
-import be.tomcools.domain.Location;
-import be.tomcools.domain.Santa;
-import be.tomcools.domain.Visit;
+import ai.timefold.domain.Location;
+import ai.timefold.domain.Santa;
+import ai.timefold.domain.Visit;
 
 import java.util.HashMap;
 import java.util.Map;

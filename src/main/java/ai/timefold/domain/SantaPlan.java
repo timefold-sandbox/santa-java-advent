@@ -1,8 +1,7 @@
-package be.tomcools.domain;
+package ai.timefold.domain;
 
 import ai.timefold.solver.core.api.domain.solution.*;
 import ai.timefold.solver.core.api.domain.valuerange.ValueRangeProvider;
-import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore;
 import ai.timefold.solver.core.api.score.buildin.hardsoftlong.HardSoftLongScore;
 
 import java.util.List;

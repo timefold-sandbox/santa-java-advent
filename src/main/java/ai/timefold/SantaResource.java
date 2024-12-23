@@ -1,10 +1,10 @@
-package be.tomcools;
+package ai.timefold;
 
 import ai.timefold.solver.core.api.solver.*;
-import be.tomcools.domain.Location;
-import be.tomcools.domain.Santa;
-import be.tomcools.domain.SantaPlan;
-import be.tomcools.domain.Visit;
+import ai.timefold.domain.Location;
+import ai.timefold.domain.Santa;
+import ai.timefold.domain.SantaPlan;
+import ai.timefold.domain.Visit;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
